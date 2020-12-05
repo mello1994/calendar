@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Day from './Day';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -8,7 +8,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
     table: {
@@ -58,7 +57,10 @@ const Calendar = (calendar) => {
                 <TableBody>
                     {calendar.calendar.map(week => (
                         <TableRow className={classes.tableRow}>
-                            {week.map(day => <TableCell className={classes.tableCell}><Day day={day} /></TableCell>)}
+                            {week.map(day => 
+                            <TableCell className={classes.tableCell}>
+                                <Day day={day} />
+                            </TableCell>)}
                         </TableRow>
                     ))}
                 </TableBody>

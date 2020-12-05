@@ -37,7 +37,7 @@ const Header = () => {
             variant="h6"
             className={classes.title}
           >
-            News
+            Calendar
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
