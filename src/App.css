@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.notThisMonth {
+  color: gray;
+}
+
+.today {
+  background-color: cornflowerblue;
+  border-radius: 100%;
+}
