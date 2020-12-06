@@ -9,6 +9,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 
 const Day = (day) => {
     const [open, setOpen] = React.useState(false);
+    const [title, setTitle] = React.useState('');
+    const [time, setTime] = React.useState('');
+    const [place, setPlace] = React.useState('');
+    const [explanation, setExplanation] = React.useState('');
+    const [plan, setPlan] = React.useState('');
     
     const handleClickOpen = () => {
         setOpen(true);
@@ -16,6 +21,19 @@ const Day = (day) => {
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleSubmit = () => {
+        setOpen(false);
+        if(title === '' && time ==='' && place==='' && explanation === ''){
+            setPlan('');
+            return;
+        }
+        if(title === ''){
+            setPlan('予定あり');
+        }else {
+            setPlan(title);
+        }
     };
     const disp = (() => {
         if (day.day.getDate() === 1) {
@@ -29,6 +47,12 @@ const Day = (day) => {
             <div variant="outlined" color="primary" onClick={handleClickOpen}>
                 {disp}
             </div>
+            <div>
+                {plan}
+            </div>
+            <div>
+                {time}
+            </div>
             <Dialog open={open} onClose={handleClose} >
                 <DialogContent>
                     <DialogContentText>
@@ -39,6 +63,8 @@ const Day = (day) => {
                             label="タイトル"
                             type="text"
                             fullWidth
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                         />
                     </DialogContentText>
 
@@ -46,8 +72,10 @@ const Day = (day) => {
                         margin="dense"
                         id="time"
                         label=""
-                        type="date"
+                        type="time"
                         fullWidth
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
                     />
                     <TextField
                         margin="dense"
@@ -55,6 +83,8 @@ const Day = (day) => {
                         label="場所"
                         type="text"
                         fullWidth
+                        value={place}
+                        onChange={(e) => setPlace(e.target.value)}
                     />
                     <TextField
                         margin="dense"
@@ -62,13 +92,15 @@ const Day = (day) => {
                         label="説明"
                         type="text"
                         fullWidth
+                        value={explanation}
+                        onChange={(e) => setExplanation(e.target.value)}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         キャンセル
             </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleSubmit} color="primary">
                         登録
             </Button>
                 </DialogActions>
