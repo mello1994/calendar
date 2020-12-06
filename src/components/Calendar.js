@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -21,13 +22,6 @@ const useStyles = makeStyles({
         width: '14%',
     },
 });
-
-const defaultProps = {
-    bgcolor: 'background.paper',
-    m: 1,
-    border: 1,
-    style: { width: '5rem', height: '5rem' },
-};
 
 const Calendar = (calendar) => {
     const classes = useStyles();
@@ -57,10 +51,10 @@ const Calendar = (calendar) => {
                 <TableBody>
                     {calendar.calendar.map(week => (
                         <TableRow className={classes.tableRow}>
-                            {week.map(day => 
-                            <TableCell className={classes.tableCell}>
-                                <Day day={day} />
-                            </TableCell>)}
+                            {week.map(day =>
+                                <TableCell className={classes.tableCell}>
+                                    <Day day={day} />
+                                </TableCell>)}
                         </TableRow>
                     ))}
                 </TableBody>
