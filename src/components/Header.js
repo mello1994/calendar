@@ -18,8 +18,16 @@ const useStyle = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-const Header = () => {
+const Header = ({setDate}, date) => {
   const classes = useStyle();
+
+  const onNext = () => {
+    setDate.setDate(new Date(date.date.getFullYear(), date.date.getMonth() + 1));
+  }
+
+  const onLast = () => {
+    setDate.setDate(new Date(date.date.getFullYear(), date.date.getMonth() - 1));
+  }
 
   return (
     <div>
@@ -39,6 +47,8 @@ const Header = () => {
           >
             Calendar
           </Typography>
+          <Button onClick={() => onLast()} color="inherit">last</Button>
+          <Button onClick={() => onNext()} color="inherit">next</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

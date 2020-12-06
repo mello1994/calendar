@@ -1,14 +1,15 @@
 import React from 'react';
 import Header from './Header';
 import Calendar from './Calendar';
-import {getEndOfMonth, getStartOfMonth, getDaysOfMonth, getColendarOfMonth} from '../lib/calcday';
+import {getColendarOfMonth} from '../lib/calcday';
 
 const Main = () => {
-    const calendar = getColendarOfMonth(new Date());
+    const [date, setDate] = React.useState(new Date());
+    const [calendar, setCalendar] = React.useState(getColendarOfMonth(date));
     
     return (
         <React.Fragment>
-            <Header />
+            <Header setCalendar={setDate} date={date} />
             <Calendar calendar={calendar}/>
         </React.Fragment>
     )
